@@ -52,10 +52,6 @@ public class Shoe {
         return card;
     }
     
-    public static void main(String[] args) {
-        Shoe s = new Shoe(Shoe.SHUFFLED);
-    }
-
     private Deck getRandomDeck() {
         return decks.get(random.nextInt(NUM_DECKS));
     }
