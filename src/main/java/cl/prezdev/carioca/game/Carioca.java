@@ -6,10 +6,12 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.LinkedList;
+import java.util.List;
 
 public class Carioca {
 
     private static final Logger log = LoggerFactory.getLogger(Carioca.class);
+    private static final String SEPARATOR = "=======================";
 
     private Shoe shoe;
     private LinkedList<Player> players;
@@ -24,7 +26,7 @@ public class Carioca {
         for (int i = 0; i < numPlayers; i++) {
             players.add(
                     new Player("j" + i)
-                    .setCards(shoe.getCards(12))
+                    .setCards(new LinkedList<>(shoe.getCards(12)))
             );
         }
         switchPlayer();
@@ -52,7 +54,7 @@ public class Carioca {
         return players.get(index);
     }
 
-    public LinkedList<Card> getCards(int playerIndex) {
+    public List<Card> getCards(int playerIndex) {
         return players.get(playerIndex).getCards();
     }
 
@@ -64,7 +66,7 @@ public class Carioca {
         printDiscardPile();
     }
 
-    public LinkedList<Card> getDiscardPile() {
+    public List<Card> getDiscardPile() {
         return discardPile;
     }
 
@@ -75,12 +77,12 @@ public class Carioca {
     }
 
     public void printDiscardPile() {
-        log.info("=======================");
+        log.info(SEPARATOR);
         log.info("Montoncito:");
-        log.info("=======================");
+        log.info(SEPARATOR);
         for (Card c : discardPile) {
             log.info("{}", c);
         }
-        log.info("=======================");
+        log.info(SEPARATOR);
     }
 }

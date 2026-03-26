@@ -1,9 +1,11 @@
 package cl.prezdev.carioca.cards;
 
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Random;
 
 public class Shoe {
+    
     private final LinkedList<Deck> decks;
     private Random random;
     private LinkedList<Card> cards;
@@ -27,23 +29,23 @@ public class Shoe {
         }
     }
 
-    public LinkedList<Deck> getDecks() {
+    public List<Deck> getDecks() {
         return decks;
     }
     
-    public LinkedList<Card> getCards(int numCards){
+    public List<Card> getCards(int numCards){
         random = new Random();
         
         Deck deck;
         
-        LinkedList<Card> cards = new LinkedList<>();
+        LinkedList<Card> selectedCards = new LinkedList<>();
         
         for (int i = 0; i < numCards; i++) {
             deck = getRandomDeck();
-            cards.add(deck.getRandomCard());
+            selectedCards.add(deck.getRandomCard());
         }
         
-        return cards;
+        return selectedCards;
     }
     
     public Card drawCard(){

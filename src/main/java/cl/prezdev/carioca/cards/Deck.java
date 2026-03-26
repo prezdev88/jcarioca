@@ -5,14 +5,15 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Random;
 
 public class Deck {
 
     private static final Logger log = LoggerFactory.getLogger(Deck.class);
+    private static final Random random = new Random();
 
     private LinkedList<Card> cards;
-    private Random random;
 
     public static final byte JOKERS = 2;
     public static final byte CARDS_PER_SUIT = 13;
@@ -49,13 +50,11 @@ public class Deck {
         }
     }
 
-    public LinkedList<Card> getCards() {
+    public List<Card> getCards() {
         return cards;
     }
 
     public Card getRandomCard() {
-        random = new Random();
-
         int index = random.nextInt(cards.size());
         Card card = cards.get(index);
 
@@ -73,9 +72,7 @@ public class Deck {
         log.info("========================================");
         log.info("Cantidad de cartas: {}", cards.size());
         log.info("========================================");
-        cards.forEach((card) -> {
-            log.info("{}", card);
-        });
+        cards.forEach(card -> log.info("{}", card));
     }
 
 }
