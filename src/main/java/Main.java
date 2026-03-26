@@ -1,18 +1,18 @@
-import barajas.Carta;
-import barajas.Mazo;
-import jcarioca.Carioca;
+import cards.Card;
+import cards.Shoe;
+import game.Carioca;
 import java.util.Scanner;
 
 public class Main {
 
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
-        Carioca carioca = new Carioca(Mazo.DESORDENADO, 2);
+        Carioca carioca = new Carioca(Shoe.SHUFFLED, 2);
 
-        int opcion;
+        int option;
         while (true) {
             System.out.println("=====================");
-            System.out.println("MENÚ [ACTUAL: " + carioca.getJugadorActual() + "]");
+            System.out.println("MENÚ [ACTUAL: " + carioca.getCurrentPlayer() + "]");
             System.out.println("=====================");
             System.out.println("1.- Ver montoncito");
             System.out.println("2.- Sacar carta de montoncito");
@@ -20,47 +20,43 @@ public class Main {
             System.out.println("4.- Jugar");
             System.out.println("5.- Ver mis cartas");
             System.out.println("OP: ");
-            opcion = scan.nextInt();
+            option = scan.nextInt();
 
-            switch (opcion) {
+            switch (option) {
                 case 1:
-                    carioca.imprimirMontoncito();
+                    carioca.printDiscardPile();
                     break;
 
                 case 2:
-                    Carta carta = carioca.sacarCartaDeMontoncito();
-                    if (carta != null) {
-                        System.out.println("Carta sacada del montón: " + carta);
-                        carioca.getJugadorActual().addCarta(carta);
-                    }else{
+                    Card card = carioca.drawFromDiscardPile();
+                    if (card != null) {
+                        System.out.println("Carta sacada del montón: " + card);
+                        carioca.getCurrentPlayer().addCard(card);
+                    } else {
                         System.out.println("No hay cartas en el montoncito");
                     }
                     break;
 
                 case 3:
-                    carta = carioca.sacarCartaDelMazo();
-                    System.out.println("Carta sacada del mazo: " + carta);
-                    carioca.getJugadorActual().addCarta(carta);
+                    card = carioca.drawFromDeck();
+                    System.out.println("Carta sacada del mazo: " + card);
+                    carioca.getCurrentPlayer().addCard(card);
                     break;
 
                 case 4:
-                    // jugar
-                    carioca.getJugadorActual().imprimirCartas();
+                    carioca.getCurrentPlayer().printCards();
                     System.out.print("ID CARTA: ");
-                    int idCarta = scan.nextInt();
-                    // juega el jugador actual, que es un objeto guardado en Carioca
-                    carioca.jugar(idCarta);
-                    carioca.switchJugador();
+                    int cardId = scan.nextInt();
+                    carioca.play(cardId);
+                    carioca.switchPlayer();
                     break;
 
                 case 5:
-                    carioca.getJugadorActual().imprimirCartas();
+                    carioca.getCurrentPlayer().printCards();
                     break;
             }
 
         }
-//        carioca.getJugador(0).imprimirCartas();
-//        carioca.getJugador(1).imprimirCartas();
 
     }
 
