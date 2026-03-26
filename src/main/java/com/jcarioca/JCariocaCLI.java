@@ -1,13 +1,27 @@
+package com.jcarioca;
+
 import cards.Card;
 import cards.Shoe;
 import game.Carioca;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.stereotype.Component;
+
 import java.util.Scanner;
 
-public class Main {
+@Component
+public class JCariocaCLI implements CommandLineRunner {
 
-    public static void main(String[] args) {
+    private final Carioca carioca;
+    private final Shoe shoe;
+
+    public JCariocaCLI(Carioca carioca, Shoe shoe) {
+        this.carioca = carioca;
+        this.shoe = shoe;
+    }
+
+    @Override
+    public void run(String... args) {
         Scanner scan = new Scanner(System.in);
-        Carioca carioca = new Carioca(Shoe.SHUFFLED, 2);
 
         int option;
         while (true) {
@@ -19,8 +33,14 @@ public class Main {
             System.out.println("3.- Sacar carta del mazo");
             System.out.println("4.- Jugar");
             System.out.println("5.- Ver mis cartas");
-            System.out.println("OP: ");
+            System.out.println("0.- Salir");
+            System.out.print("OP: ");
             option = scan.nextInt();
+
+            if (option == 0) {
+                System.out.println("¡Gracias por jugar!");
+                break;
+            }
 
             switch (option) {
                 case 1:
@@ -54,10 +74,10 @@ public class Main {
                 case 5:
                     carioca.getCurrentPlayer().printCards();
                     break;
+
+                default:
+                    System.out.println("Opción inválida");
             }
-
         }
-
     }
-
 }

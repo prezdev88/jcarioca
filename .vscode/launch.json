@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-JCariocaApplication<jcarioca>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.jcarioca.JCariocaApplication",
+            "projectName": "jcarioca",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}
