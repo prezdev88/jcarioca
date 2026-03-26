@@ -1,4 +1,4 @@
-package cards;
+package cl.prezdev.carioca.cards;
 
 import java.util.LinkedList;
 import java.util.Random;

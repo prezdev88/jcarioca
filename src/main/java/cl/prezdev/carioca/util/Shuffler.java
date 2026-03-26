@@ -1,8 +1,8 @@
-package util;
+package cl.prezdev.carioca.util;
 
-import cards.Card;
-import cards.Deck;
-import cards.Shoe;
+import cl.prezdev.carioca.cards.Card;
+import cl.prezdev.carioca.cards.Deck;
+import cl.prezdev.carioca.cards.Shoe;
 import java.util.Collections;
 import java.util.LinkedList;
 

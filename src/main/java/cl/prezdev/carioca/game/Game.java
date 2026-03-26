@@ -1,4 +1,4 @@
-package game;
+package cl.prezdev.carioca.game;
 
 public class Game {
     public static final int TWO_TRIPLETS = 6;

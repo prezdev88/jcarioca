@@ -1,4 +1,4 @@
-package cards;
+package cl.prezdev.carioca.cards;
 
 public class Joker extends Card{
     

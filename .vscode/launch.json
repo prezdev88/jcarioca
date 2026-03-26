@@ -2,6 +2,21 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Application",
+            "request": "launch",
+            "mainClass": "cl.prezdev.carioca.Application",
+            "projectName": "jcarioca"
+        },
+        {
+            "type": "java",
+            "name": "Main",
+            "request": "launch",
+            "mainClass": "cl.prezdev.carioca.Main",
+            "projectName": "jcarioca",
+            "vmArgs": " -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port=33733 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Dspring.jmx.enabled=true -Djava.rmi.server.hostname=localhost -Dspring.application.admin.enabled=true -Dspring.boot.project.name=jcarioca"
+        },
+        {
+            "type": "java",
             "name": "Spring Boot-JCariocaApplication<jcarioca>",
             "request": "launch",
             "cwd": "${workspaceFolder}",

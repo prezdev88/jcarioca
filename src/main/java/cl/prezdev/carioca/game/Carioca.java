@@ -1,10 +1,15 @@
-package game;
+package cl.prezdev.carioca.game;
 
-import cards.Card;
-import cards.Shoe;
+import cl.prezdev.carioca.cards.Card;
+import cl.prezdev.carioca.cards.Shoe;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.util.LinkedList;
 
 public class Carioca {
+
+    private static final Logger log = LoggerFactory.getLogger(Carioca.class);
 
     private Shoe shoe;
     private LinkedList<Player> players;
@@ -70,12 +75,12 @@ public class Carioca {
     }
 
     public void printDiscardPile() {
-        System.out.println("=======================");
-        System.out.println("Montoncito:");
-        System.out.println("=======================");
+        log.info("=======================");
+        log.info("Montoncito:");
+        log.info("=======================");
         for (Card c : discardPile) {
-            System.out.println(c);
+            log.info("{}", c);
         }
-        System.out.println("=======================");
+        log.info("=======================");
     }
 }

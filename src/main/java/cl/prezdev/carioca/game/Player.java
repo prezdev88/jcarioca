@@ -1,10 +1,15 @@
-package game;
+package cl.prezdev.carioca.game;
 
-import cards.Card;
+import cl.prezdev.carioca.cards.Card;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.util.LinkedList;
 import java.util.stream.Collectors;
 
 public class Player {
+
+    private static final Logger log = LoggerFactory.getLogger(Player.class);
 
     private String name;
     private LinkedList<Card> cards;
@@ -38,13 +43,13 @@ public class Player {
     }
 
     public Player printCards() {
-        System.out.println("===================================");
-        System.out.println("Cartas de [" + name + "]");
-        System.out.println("===================================");
+        log.info("===================================");
+        log.info("Cartas de [{}]", name);
+        log.info("===================================");
         for (Card c : cards) {
-            System.out.println(c);
+            log.info("{}", c);
         }
-        System.out.println("===================================");
+        log.info("===================================");
         return this;
     }
 

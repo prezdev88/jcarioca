@@ -1,11 +1,15 @@
-package cards;
+package cl.prezdev.carioca.cards;
 
-import util.Shuffler;
-import java.util.Collections;
+import cl.prezdev.carioca.util.Shuffler;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.util.LinkedList;
 import java.util.Random;
 
 public class Deck {
+
+    private static final Logger log = LoggerFactory.getLogger(Deck.class);
 
     private LinkedList<Card> cards;
     private Random random;
@@ -66,11 +70,11 @@ public class Deck {
     }
 
     public void print() {
-        System.out.println("========================================");
-        System.out.println("Cantidad de cartas: " + cards.size());
-        System.out.println("========================================");
+        log.info("========================================");
+        log.info("Cantidad de cartas: {}", cards.size());
+        log.info("========================================");
         cards.forEach((card) -> {
-            System.out.println(card);
+            log.info("{}", card);
         });
     }
 
